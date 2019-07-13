@@ -3,13 +3,15 @@ package lesson1_strategy.classes_ducks;
 import lesson1_strategy.fly.FlyBahavior;
 import lesson1_strategy.quack.QuackBehavior;
 
-public class Duck {
+public abstract class Duck {
 
-    protected FlyBahavior flyBahavior;
-    protected QuackBehavior quackBehavior;
+    FlyBahavior flyBahavior;
+    QuackBehavior quackBehavior;
+
+    public abstract void display();
 
     public void swim(){
-        System.out.println("я умею плавать");
+        System.out.println("все утки умеют плавать");
     }
 
     public void fly(){
@@ -32,7 +34,11 @@ public class Duck {
         quackBehavior.quack();
     }
 
-    public void display(){
-        System.out.println("я обычная уточка");
+    public void setFlyBahavior(FlyBahavior flyBahavior) {
+        this.flyBahavior = flyBahavior;
+    }
+
+    public void setQuackBehavior(QuackBehavior quackBehavior) {
+        this.quackBehavior = quackBehavior;
     }
 }

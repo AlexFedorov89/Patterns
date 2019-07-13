@@ -1,24 +1,33 @@
 package lesson1_strategy;
 
+import lesson1_strategy.classes_ducks.Duck;
 import lesson1_strategy.classes_ducks.MallardDuck;
+import lesson1_strategy.classes_ducks.ModelDuck;
 import lesson1_strategy.classes_ducks.RubberDuck;
+import lesson1_strategy.fly.FlyOnRocket;
 
 public class Main {
     public static void main(String[] args) {
-        MallardDuck mallardDuck = new MallardDuck();
-        mallardDuck.display();
-        mallardDuck.fly();
-        mallardDuck.swim();
-        mallardDuck.quack();
+        createDuckAndTest(new MallardDuck());
+        createDuckAndTest(new RubberDuck());
+        createModelDuckAndTest();
+
+    }
+
+    private static void createModelDuckAndTest() {
+        Duck modelDuck = createDuckAndTest(new ModelDuck());
+        modelDuck.setFlyBahavior(new FlyOnRocket());
+        modelDuck.fly();
+    }
+
+    private static Duck createDuckAndTest(Duck duck) {
+        duck.display();
+        duck.fly();
+        duck.swim();
+        duck.quack();
 
         System.out.println();
 
-        RubberDuck rubberDuck = new RubberDuck();
-        rubberDuck.display();
-        rubberDuck.fly();
-        rubberDuck.swim();
-        rubberDuck.quack();
-
-
+        return duck;
     }
 }
